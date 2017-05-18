@@ -3,7 +3,8 @@ set -e
 
 source common.sh
 
-image=vmware/registry:photon-2.6.0
+#image=vmware/registry:photon-2.6.0
+image=registry:2.6.0
 name=harbor_dev_registry
 port=5000
 registry_data=/data/registry/

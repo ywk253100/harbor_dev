@@ -3,7 +3,7 @@ set -e
 
 source common.sh
 
-clarity_image=vmware/harbor-clarity-ui-builder:0.8.4
+clarity_image=vmware/harbor-clarity-ui-builder:1.1.0
 static=$harbor/src/ui/static
 ui_ng=$harbor/src/ui_ng/src
 
