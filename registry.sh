@@ -10,8 +10,8 @@ port=5000
 registry_data=/data/registry/
 config=$harbor/make/common/config/registry
 
-sed -i -r s%"realm:.*"%"realm: http://$ip/service/token"% $config/config.yml
-sed -i -r s%"url:.*"%"url: http://$ip/service/notifications"% $config/config.yml
+sed -i -r s%"realm:.*"%"realm: http://${ip}:8080/service/token"% $config/config.yml
+sed -i -r s%"url:.*"%"url: http://${ip}:8080/service/notifications"% $config/config.yml
 
 docker rm -f $name || true
 docker run -d --name $name -p $port:5000 -v $registry_data:/storage \
