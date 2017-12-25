@@ -44,4 +44,5 @@ WITH_NOTARY=false \
 WITH_CLAIR=false \
 UI_SECRET=$ui_secret \
 JOBSERVICE_SECRET=$jobservice_secret \
+JOBSERVICE_URL=http://jobservice \
 PORT=$port JSON_CFG_STORE_PATH=$store KEY_PATH=$key $binary
