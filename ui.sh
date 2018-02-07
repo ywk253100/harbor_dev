@@ -14,3 +14,5 @@ UI_SECRET=$ui_secret \
 JOBSERVICE_SECRET=$jobservice_secret \
 CONFIG_PATH=$ui_config \
 ADMINSERVER_URL=$adminserver KEY_PATH=$key $binary
+
+#CONFIG_PATH=$ui_config \
