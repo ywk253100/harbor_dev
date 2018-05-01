@@ -3,7 +3,7 @@ set -e
 
 source common.sh
 
-image=vmware/postgresql-photon:dev
+image=vmware/postgresql-photon:v1.5.0-rc2
 name=harbor_dev_postgres
 port=5432
 password=root123
