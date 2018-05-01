@@ -1,12 +1,14 @@
 #!/bin/bash
 
 pkg=github.com/vmware/harbor/src/$1
-mysql_host=127.0.0.1
-mysql_port=3307
-mysql_username=root
-mysql_password=root123
-mysql_database=registry
+db_host=127.0.0.1
+db_port=5432
+db_username=postgres
+db_password=root123
+db_database=registry
 
-MYSQL_HOST=$mysql_host MYSQL_USR=$mysql_username \
-MYSQL_PORT=$mysql_port MYSQL_PWD=$mysql_password \
-MYSQL_DATABASE=$mysql_database go test -v $pkg
+POSTGRESQL_HOST=$db_host \ 
+POSTGRESQL_PORT=$db_port \
+POSTGRESQL_USR=$db_username \ 
+POSTGRESQL_PWD=$db_password \
+POSTGRESQL_DATABASE=$db_database go test -v $pkg
