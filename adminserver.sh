@@ -3,20 +3,17 @@ set -e
 
 source ./common.sh
 
-port=8888
-store=$data/config/config.json
-binary=$harbor/src/adminserver/adminserver
+binary=$codes/src/adminserver/adminserver
 
-LOG_LEVEL=debug \
-EXT_ENDPOINT=http://$ip \
+LOG_LEVEL=$log_level \
+EXT_ENDPOINT=http://$local_host_ip \
 AUTH_MODE=db_auth \
 SELF_REGISTRATION=on \
-MYSQL_HOST=127.0.0.1 \
-MYSQL_PORT=3307 \
-MYSQL_USR=root \
-MYSQL_PWD=root123 \
-MYSQL_DATABASE=registry \
-SQLITE_FILE= \
+POSTGRESQL_HOST=$database_host \
+POSTGRESQL_PORT=$database_port \
+POSTGRESQL_USERNAME=$database_username \
+POSTGRESQL_PASSWORD=$database_password \
+POSTGRESQL_DATABASE=$database_registry \
 LDAP_URL=ldap://10.117.6.132 \
 LDAP_SEARCH_DN=cn=admin,dc=vmware,dc=com \
 LDAP_SEARCH_PWD=admin \
@@ -32,7 +29,7 @@ EMAIL_PWD= \
 EMAIL_SSL=false \
 EMAIL_FROM="admin<admin@harbor.com>" \
 EMAIL_IDENTITY= \
-REGISTRY_URL=127.0.0.1:5000 \
+REGISTRY_URL=$registry \
 TOKEN_EXPIRATION=30 \
 CFG_EXPIRATION=5 \
 MAX_JOB_WORKERS=3 \
@@ -42,13 +39,12 @@ HARBOR_ADMIN_PASSWORD=Harbor12345 \
 ADMIRAL_URL="" \
 WITH_NOTARY=false \
 WITH_CLAIR=true \
-CLAIR_DB_PASSWORD=root123 \
-CLAIR_DB_HOST=127.0.0.1 \
-CLAIR_DB_PORT=5432 \
-CLAIR_DB_USERNAME=postgres \
-CLAIR_DB=postgres \
+CLAIR_DB_HOST=$database_host \
+CLAIR_DB_PORT=$database_port \
+CLAIR_DB_USERNAME=$database_username \
+CLAIR_DB_PASSWORD=$database_password \
+CLAIR_DB=$database_clair \
 UI_SECRET=$ui_secret \
 JOBSERVICE_SECRET=$jobservice_secret \
 JOBSERVICE_URL=http://jobservice \
-REGISTRY_STORAGE_PROVIDER_NAME=filesystem \
-PORT=$port JSON_CFG_STORE_PATH=$store KEY_PATH=$key $binary
+PORT=$adminserver_port KEY_PATH=$encrypt_key $binary

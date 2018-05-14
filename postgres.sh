@@ -5,8 +5,8 @@ source common.sh
 
 image=vmware/harbor-db:dev
 name=harbor_dev_postgres
-port=5432
-password=root123
+port=$database_port
+password=$database_password
 postgres_data=$data/database
 
 docker rm -f $name || true

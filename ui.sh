@@ -3,16 +3,15 @@ set -e
 
 source common.sh
 
-adminserver=127.0.0.1:8888
-binary=$harbor/src/ui/ui
-private_key=$harbor/make/common/config/ui/private_key.pem
-ui_config=$harbor/make/common/config/ui/app.conf
-cp $private_key /etc/ui/private_key.pem
+binary=$codes/src/ui/ui
+token_private_key=$codes/make/common/config/ui/private_key.pem
+ui_config=$codes/make/common/config/ui/app.conf
 
-LOG_LEVEL=debug \
+LOG_LEVEL=$log_level \
 UI_SECRET=$ui_secret \
 JOBSERVICE_SECRET=$jobservice_secret \
 CONFIG_PATH=$ui_config \
-ADMINSERVER_URL=$adminserver KEY_PATH=$key $binary
-
-#CONFIG_PATH=$ui_config \
+ADMINSERVER_URL=$adminserver \
+KEY_PATH=$encrypt_key \
+TOKEN_PRIVATE_KEY_PATH=$token_private_key \
+$binary
