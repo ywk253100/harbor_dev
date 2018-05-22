@@ -4,18 +4,18 @@ pkg=github.com/vmware/harbor/src/$1
 func=$2
 
 arg=$pkg
-if [ -n $func ]
+if [[ -n $func ]]
 then
     arg="$pkg -run $func"
 fi
 
-db_host=127.0.0.1
+db_host=10.117.169.13
 db_port=5432
 db_username=postgres
 db_password=root123
 db_database=registry
 
-if [ -n $3 ]
+if [[ -n $3 ]]
 then
     db_host=$3
 fi
