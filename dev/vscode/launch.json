@@ -1,0 +1,46 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Core",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${workspaceFolder}/harbor/src/core",
+            "env": {
+                "POSTGRESQL_HOST": "127.0.0.1",
+                "POSTGRESQL_PORT": "5432",
+                "REGISTRY_URL": "http://127.0.0.1:5000",
+                "_REDIS_URL": "127.0.0.1:6379,100,",
+                "CORE_URL": "http://127.0.0.1:8080",
+                "_REDIS_URL_REG": "redis://127.0.0.1:6379/2",
+                "JOBSERVICE_URL": "http://127.0.0.1:8083",
+                "HARBOR_ADMIN_PASSWORD": "Harbor12345",
+                "CORE_SECRET": "secret",
+                "JOBSERVICE_SECRET": "secret",
+                "POSTGRES_MIGRATION_SCRIPTS_PATH":"/Users/yinw/workspace/src/github.com/goharbor/harbor/make/migrations/postgresql/",
+                "KEY_PATH": "/Users/yinw/workspace/harbor_dev/dev/config/core/secret_key",
+                "TOKEN_PRIVATE_KEY_PATH": "/Users/yinw/workspace/harbor_dev/dev/config/core/private_key.pem"
+            },
+            "args": [],
+            "showLog": true
+        },
+        {
+            "name": "Jobservice",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "${workspaceFolder}/harbor/src/jobservice",
+            "args": ["-c", "/Users/yinw/workspace/harbor_dev/dev/config/jobservice/config.yml"],
+            "env": {
+                "CORE_SECRET": "secret",
+                "JOBSERVICE_SECRET": "secret",
+                "CORE_URL": "http://127.0.0.1:8080"
+            },
+            "showLog": true
+        }
+    ]
+}
