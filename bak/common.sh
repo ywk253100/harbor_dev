@@ -1,10 +1,10 @@
 #!/bin/bash
 set -e
 
-remote_host_ip=10.117.169.13
+remote_host_ip=10.117.170.10
 local_host_ip=$(ifconfig en10 | awk '/inet /{print substr($2,0)}')
 
-codes=/Users/yinw/workspace/src/github.com/vmware/harbor
+codes=/Users/yinw/workspace/src/github.com/goharbor/harbor
 data=/data
 encrypt_key=$data/secretkey
 

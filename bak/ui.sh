@@ -3,7 +3,7 @@ set -e
 
 source common.sh
 
-binary=$codes/src/ui/ui
+binary=$codes/src/core/core
 token_private_key=$codes/make/common/config/ui/private_key.pem
 ui_config=$codes/make/common/config/ui/app.conf
 
