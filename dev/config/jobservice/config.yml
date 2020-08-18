@@ -31,9 +31,9 @@ job_loggers:
     sweeper:
       duration: 1 #days
       settings: # Customized settings of sweeper
-        work_dir: "/tmp"
+        work_dir: "/tmp/job_log"
 
 #Loggers for the job service
 loggers:
   - name: "STD_OUTPUT" # Same with above
-    level: "DEBUG"
+    level: "debug"
