@@ -18,9 +18,9 @@ if [[ -z ${OPENSSLCNF} ]]; then
 fi
 
 # Create CA certificate
-openssl req \
-    -newkey rsa:4096 -nodes -sha256 -keyout $CUR_DIR/harbor_ca.key \
-    -x509 -days 365 -out $CUR_DIR/harbor_ca.crt -subj '/C=CN/ST=PEK/L=Bei Jing/O=VMware/CN=HarborCA'
+#openssl req \
+#    -newkey rsa:4096 -nodes -sha256 -keyout $CUR_DIR/harbor_ca.key \
+#    -x509 -days 365 -out $CUR_DIR/harbor_ca.crt -subj '/C=CN/ST=PEK/L=Bei Jing/O=VMware/CN=HarborCA'
 
 # Generate a Certificate Signing Request
 if echo $IP|grep -E '^([0-9]+\.){3}[0-9]+$' ; then
@@ -36,8 +36,8 @@ echo subjectAltName = DNS.1:$IP > extfile.cnf
 fi
 
 # Generate the certificate of local registry host
-openssl x509 -req -days 365 -sha256 -in $IP.csr -CA $CUR_DIR/harbor_ca.crt \
-	-CAkey $CUR_DIR/harbor_ca.key -CAcreateserial -extfile extfile.cnf -out $IP.crt
+openssl x509 -req -days 365 -sha256 -in $IP.csr -CA ./certificate/ca.crt \
+	-CAkey ./certificate/ca.key -CAcreateserial -extfile extfile.cnf -out $IP.crt
 	
 # Copy to harbor default location
 mkdir -p $DATA_VOL/cert
