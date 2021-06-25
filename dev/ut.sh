@@ -15,4 +15,4 @@ POSTGRESQL_USR=postgres \
 POSTGRESQL_PWD=root123 \
 POSTGRESQL_DATABASE=registry \
 POSTGRES_MIGRATION_SCRIPTS_PATH=/Users/yinw/workspace/src/github.com/goharbor/harbor/make/migrations/postgresql \
-go test -v $arg
+go test -v -race $arg

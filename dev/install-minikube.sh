@@ -13,4 +13,4 @@ install minikube-linux-amd64 /usr/local/bin/minikube
 apt-get update
 apt-get install conntrack -y
 
-minikube start --driver=none
+minikube start --driver=none --insecure-registry "0.0.0.0/0"
